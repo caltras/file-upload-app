@@ -1,12 +1,9 @@
-const configuration = require("../config");
-//const MongoDBService = require("./mongodb.service");
-//const MongoDBService = require("../../mocks/mongodb.fake");
 const logger = require("../utility/logger")("FileUploadService");
 
 module.exports = class FileService {
 
     constructor(mongoDbService){
-        this.db = mongoDbService;//new MongoDBService("files");
+        this.db = mongoDbService;
     }
 
     find(parameters) {

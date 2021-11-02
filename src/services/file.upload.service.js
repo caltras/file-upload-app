@@ -1,7 +1,5 @@
 const configuration = require("../config");
 const multer = require("multer");
-//const MongoDBService = require("./mongodb.service");
-// const MongoDBService = require("../../mocks/mongodb.fake");
 const FileModel = require("../model/file.model");
 const logger = require("../utility/logger")("FileUploadService");
 

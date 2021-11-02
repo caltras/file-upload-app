@@ -4,10 +4,6 @@ const logger = require("../utility/logger")("FileRouter");
 
 const express = require("express");
 const router = new express.Router();
-// const FileUploadService = require("../services/file.upload.service");
-// const FileService = require("../services/file.service");
-// const fileUploadService = new FileUploadService();
-// const fileService = new FileService();
 const fs = require("fs");
 const path = require('path')
 

@@ -33,9 +33,6 @@ app.use(function(req, res, next) {
 });
 
 //STARTUP
-// app.listen(() => {
-//   console.log(`File Upload Service listening at http://localhost:${port}`)
-// });
 var server = http.createServer(app);
 
 server.listen(port);
