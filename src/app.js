@@ -38,7 +38,7 @@ app.use(function(req, res, next) {
 // });
 var server = http.createServer(app);
 
-server.listen();
+server.listen(port);
 server.on('listening', onListening);
 
 function onListening() {

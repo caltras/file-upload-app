@@ -17,7 +17,6 @@ module.exports = (fileService, fileUploadService) =>{
         fileService.find(req.query).then(results => {
             logger.debug("Results:");
             results.toArray((err, r) => {
-                console.log(r);
                 if (err) {
                     res.status = 500;
                     res.json(err.message);
