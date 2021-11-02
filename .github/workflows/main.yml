@@ -51,11 +51,6 @@ jobs:
       env:
         HEROKU_API_KEY: ${{ secrets.HEROKU_API_KEY }}
         HEROKU_EMAIL: ${{ secrets.HEROKU_EMAIL }}
-    - name: Whoami
-      env:
-        HEROKU_EMAIL: ${{ secrets.HEROKU_EMAIL }}
-        HEROKU_API_KEY: ${{ secrets.HEROKU_API_KEY }}
-      run: heroku whoami
     - name: Build and push
       env:
         HEROKU_EMAIL: ${{ secrets.HEROKU_EMAIL }}
@@ -65,4 +60,7 @@ jobs:
       env:
         HEROKU_EMAIL: ${{ secrets.HEROKU_EMAIL }}
         HEROKU_API_KEY: ${{ secrets.HEROKU_API_KEY }}
-      run: git push heroku main
+      run: |
+        git add .
+        git commit -m "Deploying"
+        git push heroku main
