@@ -9,13 +9,19 @@ module.exports = {
     },
     log: {
         level: "ERROR",
-        // provider : {
-        //     name: "elasticsearch.logger.js",
-        //     host: "http://localhost:9200"    
-        // }
-        // provider:{
-        //     name: "console.logger.js"
-        // },
+        
+        // Use Elasticsearch as log provider
+        /*provider : {
+            name: "elasticsearch.logger.js",
+            host: "http://localhost:9200"    
+        }*/
+        
+        // Use console as log provider
+        /*provider:{
+            name: "console.logger.js"
+        },*/
+
+        // Use mongodb as log provider
         provider : {
             name: "mongodb.logger.js",
             host: "mongodb://localhost:27017"

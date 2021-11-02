@@ -1,9 +1,8 @@
 const errorHandler = require("./utility/error.handler");
 var express = require('express');
-var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
-
+var http = require('http');
 const app = express();
 const port = 3000
 
@@ -27,8 +26,20 @@ app.use(function(req, res, next) {
 });
 
 //STARTUP
-app.listen(port, () => {
-  console.log(`File Upload Service listening at http://localhost:${port}`)
-});
+// app.listen(() => {
+//   console.log(`File Upload Service listening at http://localhost:${port}`)
+// });
+var server = http.createServer(app);
+
+server.listen();
+server.on('listening', onListening);
+
+function onListening() {
+  var addr = server.address();
+  var bind = typeof addr === 'string'
+    ? 'pipe ' + addr
+    : 'port ' + addr.port;
+  console.log('Listening on ' + bind);
+}
 
 module.exports = app;
