@@ -62,7 +62,7 @@ jobs:
         HEROKU_API_KEY: ${{ secrets.HEROKU_API_KEY }}
       run: |
         git config --global user.email "caltras@gmail.com"
-        git config --global user.email "Github"
+        git config --global user.name "Github"
         git add .
         git commit -m "Deploying"
         git push heroku master
