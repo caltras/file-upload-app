@@ -65,4 +65,4 @@ jobs:
       env:
         HEROKU_EMAIL: ${{ secrets.HEROKU_EMAIL }}
         HEROKU_API_KEY: ${{ secrets.HEROKU_API_KEY }}
-      run: git push heroku master
+      run: git push heroku main
