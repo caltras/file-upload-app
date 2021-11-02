@@ -15,8 +15,8 @@ module.exports = class MongoDBLoggerProvider {
             this.db = this.client.db(this.dbName);
             return this.db.collection(this.collectionName);
         } catch (e) {
-            logger.error(JSON.stringify(e));
-            return null;
+            console.error(JSON.stringify(e));
+            return Promise.reject({error: 500, message: e.message});
         }
     }
 

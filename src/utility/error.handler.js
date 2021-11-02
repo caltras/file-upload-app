@@ -1,4 +1,4 @@
 module.exports = (res, err) => {
-    res.status(err.code || 500);
+    res.status((err.code && err.code < 200)  || 500);
     res.send(err.message);
 }
