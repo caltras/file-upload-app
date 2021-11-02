@@ -1,6 +1,6 @@
-const configuration = require("../config");
+const configuration = require("../../config");
 const { MongoClient, ObjectId } = require('mongodb');
-const logger = require("../utility/logger")("MongoDBProvider");
+const logger = require("../../utility/logger")("MongoDBProvider");
 
 const url = configuration.db.url;;
 

@@ -7,6 +7,11 @@ const app = express();
 const port = 3000
 
 const fileRouter = require("./routes/file");
+const MongoDbService = require('./services/db/');
+
+const FileService = require("./services/file.service");
+const FileUploadService = require("./services/file.upload.service");
+
 
 app.use(logger('dev'));
 app.use(express.json());
@@ -19,7 +24,9 @@ app.get('/', (req, res) => {
     res.send('Welcome to the File Upload Service');
 });
 
-app.use("/file", fileRouter);
+const mongoService = new MongoDbService("files");
+
+app.use("/file", fileRouter(new FileService(mongoService), new FileUploadService(mongoService)));
 
 app.use(function(req, res, next) {
     next(errorHandler(res, {code: 404, message: "Page not Found"}));
@@ -42,4 +49,4 @@ function onListening() {
   console.log('Listening on ' + bind);
 }
 
-module.exports = app;
+module.exports = server;

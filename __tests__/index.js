@@ -19,7 +19,7 @@ describe("Test Welcome page", () =>{
     });
 
     afterAll((done) => {
-        done();
+        server.close(done);
     })
 
     

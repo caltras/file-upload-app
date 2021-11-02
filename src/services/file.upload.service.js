@@ -1,6 +1,7 @@
 const configuration = require("../config");
 const multer = require("multer");
-const MongoDBService = require("./mongodb.service");
+//const MongoDBService = require("./mongodb.service");
+// const MongoDBService = require("../../mocks/mongodb.fake");
 const FileModel = require("../model/file.model");
 const logger = require("../utility/logger")("FileUploadService");
 
@@ -15,7 +16,7 @@ const storage = multer.diskStorage({
 
 module.exports = class FileUploadService {
 
-    constructor() {
+    constructor(mongoDBService) {
         this.upload = multer({ 
             storage: storage,
             limits: { fileSize: configuration.upload.maxSize },
@@ -30,13 +31,15 @@ module.exports = class FileUploadService {
                 }
             } 
         }).any();
-        this.db = new MongoDBService("files");
+        this.db = mongoDBService;//new MongoDBService("files");
     }
 
     processFile(req, res) {
         const self = this;
         return new Promise(async (resolve, reject) => {
+            logger.debug("Uploading file...")
             self.upload(req, res, async (err) => {
+                logger.debug("Uploaded");
                 if (err) {
                     reject(err);
                 } else {
