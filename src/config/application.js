@@ -5,7 +5,7 @@ module.exports = {
         maxSize: 25 * 1000 * 1000 * 1000
     },
     db: {
-        url: 'mongodb://localhost:27017'
+        url: process.env.DB_HOST || 'mongodb://localhost:27017'
     },
     log: {
         level: "ERROR",
