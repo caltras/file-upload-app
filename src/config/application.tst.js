@@ -1,6 +1,6 @@
 module.exports = {
     log: {
-        level: "DEBUG",
+        level: "INFO",
         
         provider:{
             name: "console.logger.js"
