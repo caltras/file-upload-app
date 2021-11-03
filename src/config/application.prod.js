@@ -24,7 +24,7 @@ module.exports = {
         // Use mongodb as log provider
         provider : {
             name: "mongodb.logger.js",
-            host: "mongodb://localhost:27017"
+            host: process.env.DB_HOST
         }
         
     },
