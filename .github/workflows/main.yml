@@ -36,6 +36,7 @@ jobs:
         CI: true
   sonarcloud:
     name: SonarCloud
+    needs: test
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
@@ -48,6 +49,7 @@ jobs:
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
   build:
     runs-on: ubuntu-latest
+    needs: sonarcloud
     steps:
       - name: Check out repository
         uses: actions/checkout@v2
