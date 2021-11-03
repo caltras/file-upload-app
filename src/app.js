@@ -3,6 +3,7 @@ var express = require('express');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 var http = require('http');
+const AuthMiddleware = require('./utility/auth');
 const app = express();
 const port = process.env.PORT || 80
 
@@ -26,7 +27,7 @@ app.get('/', (req, res) => {
 
 const mongoService = new MongoDbService("files");
 
-app.use("/file", fileRouter(new FileService(mongoService), new FileUploadService(mongoService)));
+app.use("/file", AuthMiddleware(), fileRouter(new FileService(mongoService), new FileUploadService(mongoService)));
 
 app.use(function(req, res, next) {
     next(errorHandler(res, {code: 404, message: "Page not Found"}));

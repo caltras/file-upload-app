@@ -75,7 +75,9 @@ For Elasticsearch, is possible use ELK (Elasticsearch, Logstash, Kibana) stack.
     Welcome page
 
 2. GET /file - List of files saved on server
-    
+
+    @header: Authorization token
+
     @return Array (A list of files)
         
         Fields:
@@ -87,7 +89,9 @@ For Elasticsearch, is possible use ELK (Elasticsearch, Logstash, Kibana) stack.
             createAt: Date
         ```
 3. POST /file - Save a file on server
-    
+
+    @header: Authorization token
+
     @payload - List of files
 
     @return Obj (Success/Fail message)
@@ -102,6 +106,9 @@ For Elasticsearch, is possible use ELK (Elasticsearch, Logstash, Kibana) stack.
 4. GET /file/dowload/:id - Download a specific file
     
     @return File
+
+
+*Authorization for this api is simple, using a token pre-defined on configuration file and AuthMidleware.*
 
 
 ## Pipeline
