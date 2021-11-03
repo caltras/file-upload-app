@@ -45,32 +45,3 @@ jobs:
           heroku_api_key: ${{ secrets.HEROKU_API_KEY }}
           heroku_app_name: ${{ secrets.HEROKU_APP_NAME }}
           heroku_email: ${{ secrets.HEROKU_EMAIL }}
-    # - uses: actions/checkout@v1
-    # - name: Heroku login credentials
-    #   run: |
-    #     cat > ~/.netrc <<EOF
-    #       machine api.heroku.com
-    #         login $HEROKU_EMAIL
-    #         password $HEROKU_API_KEY
-    #       machine git.heroku.com
-    #         login $HEROKU_EMAIL
-    #         password $HEROKU_API_KEY
-    #     EOF
-    #   env:
-    #     HEROKU_API_KEY: ${{ secrets.HEROKU_API_KEY }}
-    #     HEROKU_EMAIL: ${{ secrets.HEROKU_EMAIL }}
-    # - name: Build and push
-    #   env:
-    #     HEROKU_EMAIL: ${{ secrets.HEROKU_EMAIL }}
-    #     HEROKU_API_KEY: ${{ secrets.HEROKU_API_KEY }}
-    #   run: heroku git:remote --app fileupload-claudio
-    # - name: Release
-    #   env:
-    #     HEROKU_EMAIL: ${{ secrets.HEROKU_EMAIL }}
-    #     HEROKU_API_KEY: ${{ secrets.HEROKU_API_KEY }}
-    #   run: |
-    #     git config --global user.email "$HEROKU_EMAIL"
-    #     git config --global user.name "Github"
-    #     git add .
-    #     git commit -m "Deploying"
-    #     git push heroku test:main
