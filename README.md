@@ -102,3 +102,9 @@ For Elasticsearch, is possible use ELK (Elasticsearch, Logstash, Kibana) stack.
 4. GET /file/dowload/:id - Download a specific file
     
     @return File
+
+
+## Pipeline
+
+This project is using the actions from github in order to test and deploy the application on heroku.
+Check the page https://github.com/caltras/file-upload-app/actions for more information.
