@@ -27,5 +27,8 @@ module.exports = {
             host: "mongodb://localhost:27017"
         }
         
+    },
+    authentication:{
+        token: process.env.API_TOKEN
     }
 }
