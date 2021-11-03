@@ -4,7 +4,7 @@ var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 var http = require('http');
 const app = express();
-const port = 3000
+const port = 8080
 
 const fileRouter = require("./routes/file");
 const MongoDbService = require('./services/db/');
