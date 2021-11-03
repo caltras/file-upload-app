@@ -61,7 +61,7 @@ jobs:
         HEROKU_EMAIL: ${{ secrets.HEROKU_EMAIL }}
         HEROKU_API_KEY: ${{ secrets.HEROKU_API_KEY }}
       run: |
-        git config --global user.email "caltras@gmail.com"
+        git config --global user.email "$HEROKU_EMAIL"
         git config --global user.name "Github"
         git add .
         git commit -m "Deploying"
