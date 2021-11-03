@@ -60,4 +60,3 @@ module.exports = (fileService, fileUploadService) =>{
     });
     return router;
 }
-//module.exports = router;
