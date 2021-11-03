@@ -4,7 +4,7 @@
   "description": "File Upload Service",
   "main": "src/app.js",
   "scripts": {
-    "start": "nodemon src/app.js",
+    "start": "node src/app.js",
     "test": "cross-env ENV=tst NODE_ENV=test jest --testTimeout=10000 --coverage --detectOpenHandles",
     "debug-test": "ENV=tst NODE_ENV=test node --inspect-brk ./node_modules/jest/bin/jest.js --runInBand"
   },
