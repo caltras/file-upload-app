@@ -29,7 +29,7 @@ module.exports = class FileUploadService {
                 }
             } 
         }).any();
-        this.db = mongoDBService;//new MongoDBService("files");
+        this.db = mongoDBService;
     }
 
     processFile(req, res) {

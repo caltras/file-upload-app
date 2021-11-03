@@ -2,7 +2,7 @@ const configuration = require("../../config");
 const { MongoClient, ObjectId } = require('mongodb');
 const logger = require("../../utility/logger")("MongoDBProvider");
 
-const url = configuration.db.url;;
+const url = configuration.db.url;
 
 module.exports = class MongoDBProvider {
 
@@ -52,7 +52,7 @@ module.exports = class MongoDBProvider {
             return collection.findOne({ _id: _id })
                 .then((result => {
                     if (!result) {
-                        throw { code: 404, message: "Element `" + id + "` not found" };
+                        throw new Error({ code: 404, message: "Element `" + id + "` not found" });
                     }
                     return result;
                 }));
