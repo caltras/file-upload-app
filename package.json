@@ -5,8 +5,7 @@
   "main": "src/app.js",
   "scripts": {
     "start": "node src/app.js",
-    "test": "cross-env ENV=tst NODE_ENV=test jest --testTimeout=10000 --coverage --detectOpenHandles",
-    "debug-test": "ENV=tst NODE_ENV=test node --inspect-brk ./node_modules/jest/bin/jest.js --runInBand"
+    "test": "cross-env PORT=3000 ENV=tst NODE_ENV=test jest --testTimeout=10000 --coverage --detectOpenHandles"
   },
   "repository": {
     "type": "git",
