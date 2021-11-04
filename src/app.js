@@ -5,7 +5,7 @@ var logger = require('morgan');
 var http = require('http');
 const AuthMiddleware = require('./utility/auth');
 const app = express();
-const port = process.env.PORT || 80
+const port = process.env.PORT || 3000;
 
 const fileRouter = require("./routes/file");
 const MongoDbService = require('./services/db/');
@@ -26,8 +26,11 @@ app.get('/', (req, res) => {
 });
 
 const mongoService = new MongoDbService("files");
+const fileService = new FileService(mongoService);
 
-app.use("/file", AuthMiddleware(), fileRouter(new FileService(mongoService), new FileUploadService(mongoService)));
+fileService.checkDirectory();
+
+app.use("/file", AuthMiddleware(), fileRouter(fileService, new FileUploadService(mongoService)));
 
 app.use(function(req, res, next) {
     next(errorHandler(res, {code: 404, message: "Page not Found"}));

@@ -2,15 +2,22 @@ const configuration = require("../config");
 const multer = require("multer");
 const FileModel = require("../model/file.model");
 const logger = require("../utility/logger")("FileUploadService");
+const fs = require("fs");
 
 const storage = multer.diskStorage({
     destination: function (req, file, cb) {
+        
+        if (!fs.existsSync(configuration.upload.destinationFolder)) {
+            fs.mkdirSync(configuration.upload.destinationFolder, { recursive: true});
+        }
+
         cb(null, configuration.upload.destinationFolder)
     },
     filename: function (req, file, cb) {
         cb(null, file.originalname)
     }
 });
+
 
 module.exports = class FileUploadService {
 

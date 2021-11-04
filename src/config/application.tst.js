@@ -13,5 +13,8 @@ module.exports = {
             name: "console.logger.js"
         },
         
+    },
+    file: {
+        monitoring: false
     }
 }
