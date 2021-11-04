@@ -2,32 +2,33 @@ const configuration = require("../config");
 const multer = require("multer");
 const FileModel = require("../model/file.model");
 const logger = require("../utility/logger")("FileUploadService");
+const { replaceSpecialCharacters } = require('../utility/string.util');
 
 const storage = multer.diskStorage({
     destination: function (req, file, cb) {
         cb(null, configuration.upload.destinationFolder)
     },
     filename: function (req, file, cb) {
-        cb(null, file.originalname)
+        cb(null, replaceSpecialCharacters(file.originalname));
     }
 });
 
 module.exports = class FileUploadService {
 
     constructor(mongoDBService) {
-        this.upload = multer({ 
+        this.upload = multer({
             storage: storage,
             limits: { fileSize: configuration.upload.maxSize },
-            fileFilter: function(req, file, cb) {
+            fileFilter: function (req, file, cb) {
                 const name = file.originalname.split(".");
                 const allowedExtensions = configuration.upload.accepts;
-                if (allowedExtensions.indexOf("."+name[name.length -1]) === -1) {
-                    const error = "File is not allowed. This API only accepts `"+ allowedExtensions.toString() + "`";
-                    cb({code:503, message: error}, false);
-                }else {
+                if (allowedExtensions.indexOf("." + name[name.length - 1]) === -1) {
+                    const error = "File is not allowed. This API only accepts `" + allowedExtensions.toString() + "`";
+                    cb({ code: 503, message: error }, false);
+                } else {
                     cb(null, true);
                 }
-            } 
+            }
         }).any();
         this.db = mongoDBService;
     }
@@ -42,10 +43,10 @@ module.exports = class FileUploadService {
                     reject(err);
                 } else {
                     if (req.files && req.files.length > 0) {
-                        try{
+                        try {
                             await this.saveFileDB(req.files);
                             resolve({ code: 200, message: "File Uploaded" });
-                        }catch(e){
+                        } catch (e) {
                             reject({ code: 503, message: e.message });
                         }
                     } else {
