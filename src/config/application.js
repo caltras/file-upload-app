@@ -17,18 +17,21 @@ module.exports = {
         }*/
         
         // Use console as log provider
-        /*provider:{
+        provider:{
             name: "console.logger.js"
-        },*/
+        },
 
         // Use mongodb as log provider
-        provider : {
-            name: "mongodb.logger.js",
-            host: "mongodb://localhost:27017"
-        }
+        // provider : {
+        //     name: "mongodb.logger.js",
+        //     host: "mongodb://localhost:27017"
+        // }
         
     },
     authentication:{
         token: "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkNsYXVkaW8iLCJhZG1pbiI6dHJ1ZSwiaWF0IjoxNjM1OTA5MjQ3LCJleHAiOjE2MzU5MTI4NDd9.ZQFy6bVIBtWGmSZD_fnmlS16y2xCCv0q8QjcODWsyPQ"
+    },
+    file: {
+        monitoring: true
     }
 }

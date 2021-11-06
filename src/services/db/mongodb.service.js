@@ -76,10 +76,26 @@ module.exports = class MongoDBProvider {
             }
             let collection = await this.getCollection();
 
-            return collection.find({})
+            const query = collection.find({})
                 .skip(Number(offset || 0))
-                .sort(mapSort || {})
-                .limit(Number(limit || 10));
+                .sort(mapSort || {});
+
+            if (limit && limit > -1) {
+                query.limit(Number(limit || 10));
+            }
+
+            return query;
+        } catch (e) {
+            logger.error(JSON.stringify(e));
+            return Promise.reject(e);
+        }
+    }
+
+    async deleteAll(obj) {
+        try {
+            let collection = await this.getCollection();
+            const response = await collection.deleteMany(obj);
+            return response;
         } catch (e) {
             logger.error(JSON.stringify(e));
             return Promise.reject(e);

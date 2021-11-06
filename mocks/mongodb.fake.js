@@ -48,4 +48,10 @@ module.exports = class MongoDBProviderFake {
             resolve(results);
         })
     }
+
+    deleteAll(obj){
+        return new Promise((resolve, reject) => {
+            resolve();
+        })
+    }
 };

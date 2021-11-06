@@ -5,13 +5,12 @@ const logger = require("../utility/logger")("FileRouter");
 const express = require("express");
 const router = new express.Router();
 const fs = require("fs");
-const path = require('path')
+const path = require('path');
 
 module.exports = (fileService, fileUploadService) =>{
 
     router.get("/", (req, res, next) => {
         fileService.find(req.query).then(results => {
-            logger.debug("Results:");
             results.toArray((err, r) => {
                 if (err) {
                     res.status = 500;
